@@ -1,0 +1,30 @@
+#SKR reverse engineer challenge
+
+$ gcc -o beginner2 beginner2.c #running the program immediatly as "./beginner2.c" may not work as C files must be compliled via gcc
+
+$./beginner2
+Enter password: #you will then be prompted to write a password
+
+#To find the passwor we go to our original C file to reverse engineer our way to the password
+
+$ cat beginner2.c 
+#include <stdio.h>
+#include <stdlib.h> 
+int main() {
+        char password[16];
+        printf("Enter password: ");
+        scanf("%s",password);
+        int pass = atoi(password);
+        if ((pass*2)-666 == 2008)  # a simple math equation to find the variable "pass" where pass = 2008+666/2
+        {
+                printf("Welcome admin!\nFlag: SKR{%s}",password);
+        }else{
+                printf("Login failed!");
+        }
+        return 0;
+}
+
+$./beginner2
+Enter password: 1337
+
+
